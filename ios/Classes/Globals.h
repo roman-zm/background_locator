@@ -30,6 +30,7 @@ FOUNDATION_EXPORT NSString *const kArgLatitude;
 FOUNDATION_EXPORT NSString *const kArgLongitude;
 FOUNDATION_EXPORT NSString *const kArgAccuracy;
 FOUNDATION_EXPORT NSString *const kArgAltitude;
+FOUNDATION_EXPORT NSString *const kArgVerticalAccuracy;
 FOUNDATION_EXPORT NSString *const kArgSpeed;
 FOUNDATION_EXPORT NSString *const kArgSpeedAccuracy;
 FOUNDATION_EXPORT NSString *const kArgHeading;

@@ -22,6 +22,7 @@ class Keys {
   static const String ARG_LONGITUDE = 'longitude';
   static const String ARG_ALTITUDE = 'altitude';
   static const String ARG_ACCURACY = 'accuracy';
+  static const String ARG_VERTICAL_ACCURACY = 'vertical_accuracy';
   static const String ARG_SPEED = 'speed';
   static const String ARG_SPEED_ACCURACY = 'speed_accuracy';
   static const String ARG_HEADING = 'heading';

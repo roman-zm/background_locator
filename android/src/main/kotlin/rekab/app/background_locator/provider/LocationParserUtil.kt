@@ -18,12 +18,18 @@ class LocationParserUtil {
                 isMocked = location.isFromMockProvider
             }
 
+            var verticalAccuracy = 0f
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && location.hasVerticalAccuracy()) {
+                verticalAccuracy = location.verticalAccuracyMeters
+            }
+
             return hashMapOf(
                     Keys.ARG_IS_MOCKED to isMocked,
                     Keys.ARG_LATITUDE to location.latitude,
                     Keys.ARG_LONGITUDE to location.longitude,
                     Keys.ARG_ACCURACY to location.accuracy,
                     Keys.ARG_ALTITUDE to location.altitude,
+                    Keys.ARG_VERTICAL_ACCURACY to verticalAccuracy,
                     Keys.ARG_SPEED to location.speed,
                     Keys.ARG_SPEED_ACCURACY to speedAccuracy,
                     Keys.ARG_HEADING to location.bearing,
@@ -41,6 +47,11 @@ class LocationParserUtil {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                 isMocked = firstLocation.isFromMockProvider
             }
+            
+            var verticalAccuracy = 0f
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && firstLocation.hasVerticalAccuracy()) {
+                verticalAccuracy = firstLocation.verticalAccuracyMeters
+            }
 
             return hashMapOf(
                     Keys.ARG_IS_MOCKED to isMocked,
@@ -48,6 +59,7 @@ class LocationParserUtil {
                     Keys.ARG_LONGITUDE to firstLocation.longitude,
                     Keys.ARG_ACCURACY to firstLocation.accuracy,
                     Keys.ARG_ALTITUDE to firstLocation.altitude,
+                    Keys.ARG_VERTICAL_ACCURACY to verticalAccuracy,
                     Keys.ARG_SPEED to firstLocation.speed,
                     Keys.ARG_SPEED_ACCURACY to speedAccuracy,
                     Keys.ARG_HEADING to firstLocation.bearing,

@@ -34,6 +34,7 @@
             kArgLongitude: @(location.coordinate.longitude),
             kArgAccuracy: @(location.horizontalAccuracy),
             kArgAltitude: @(location.altitude),
+            kArgVerticalAccuracy: @(location.verticalAccuracy),
             kArgSpeed: @(location.speed),
             kArgSpeedAccuracy: @(0.0),
             kArgHeading: @(location.course),

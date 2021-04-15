@@ -27,6 +27,7 @@ NSString *const kMethodPluginUpdateNotification = @"LocatorPlugin.updateNotifica
 NSString *const kArgLatitude = @"latitude";
 NSString *const kArgLongitude = @"longitude";
 NSString *const kArgAccuracy = @"accuracy";
+NSString *const kArgVerticalAccuracy = @"vertical_accuracy";
 NSString *const kArgAltitude = @"altitude";
 NSString *const kArgSpeed = @"speed";
 NSString *const kArgSpeedAccuracy = @"speed_accuracy";

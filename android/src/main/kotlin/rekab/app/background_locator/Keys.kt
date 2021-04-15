@@ -52,6 +52,9 @@ class Keys {
 
         @JvmStatic
         val ARG_ACCURACY = "accuracy"
+        
+        @JvmStatic
+        val ARG_VERTICAL_ACCURACY = "vertical_accuracy"
 
         @JvmStatic
         val ARG_ALTITUDE = "altitude"
