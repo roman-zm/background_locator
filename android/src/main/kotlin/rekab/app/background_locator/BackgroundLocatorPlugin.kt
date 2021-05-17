@@ -61,7 +61,6 @@ class BackgroundLocatorPlugin
 
             startIsolateService(context, settings)
             result?.success(true)
-            PreferencesManager.setServiceRunning(context, true)
         }
 
         @JvmStatic
