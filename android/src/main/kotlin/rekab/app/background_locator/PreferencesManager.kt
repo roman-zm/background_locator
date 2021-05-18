@@ -159,16 +159,25 @@ class PreferencesManager {
         }
 
         @JvmStatic
+        private var isRunning: Boolean = false
+
+        @JvmStatic
         fun isServiceRunning(context: Context): Boolean {
-            return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-                    .getBoolean(Keys.PREF_SERVICE_IS_RUNNING, false)
+            readServiceRunningFromStorage(context)
+            return isRunning
         }
 
         @JvmStatic
         fun setServiceRunning(context: Context, running: Boolean) {
+            isRunning = running
             context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
                     .edit().putBoolean(Keys.PREF_SERVICE_IS_RUNNING, running)
                     .apply()
+        }
+
+        fun readServiceRunningFromStorage(context: Context) {
+            isRunning = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+                    .getBoolean(Keys.PREF_SERVICE_IS_RUNNING, false);
         }
     }
 }

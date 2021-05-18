@@ -181,6 +181,7 @@ class BackgroundLocatorPlugin
         @JvmStatic
         fun registerAfterBoot(context: Context) {
             val settings = PreferencesManager.getSettings(context)
+            PreferencesManager.readServiceRunningFromStorage(context)
 
             val plugin = BackgroundLocatorPlugin()
             plugin.context = context
