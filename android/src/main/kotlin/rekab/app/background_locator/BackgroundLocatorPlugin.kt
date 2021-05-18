@@ -34,7 +34,7 @@ class BackgroundLocatorPlugin
         private fun registerLocator(context: Context,
                                     args: Map<Any, Any>,
                                     result: Result?) {
-            if (PreferencesManager.isServiceRunning(context)) {
+            if (IsolateHolderService.isRunning) {
                 // The service is running already
                 Log.d("BackgroundLocatorPlugin", "Locator service is already running")
                 return
@@ -60,6 +60,7 @@ class BackgroundLocatorPlugin
             }
 
             startIsolateService(context, settings)
+            PreferencesManager.setServiceRunning(context, true)
             result?.success(true)
             PreferencesManager.setServiceRunning(context, true)
         }
@@ -107,7 +108,7 @@ class BackgroundLocatorPlugin
 
         @JvmStatic
         private fun unRegisterPlugin(context: Context) {
-            if (!PreferencesManager.isServiceRunning(context)) {
+            if (!IsolateHolderService.isRunning) {
                 // The service is not running
                 Log.d("BackgroundLocatorPlugin", "Locator service is not running, nothing to stop")
                 return
@@ -219,7 +220,7 @@ class BackgroundLocatorPlugin
             Keys.METHOD_PLUGIN_IS_REGISTER_LOCATION_UPDATE -> isServiceRunning(context!!, result)
             Keys.METHOD_PLUGIN_IS_SERVICE_RUNNING -> isServiceRunning(context!!, result)
             Keys.METHOD_PLUGIN_UPDATE_NOTIFICATION -> {
-                if (!PreferencesManager.isServiceRunning(context!!)) {
+                if (!IsolateHolderService.isRunning) {
                     return
                 }
 

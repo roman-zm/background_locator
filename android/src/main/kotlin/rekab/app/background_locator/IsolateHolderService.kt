@@ -35,6 +35,9 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
 
         @JvmStatic
         private val notificationId = 1
+
+        @JvmStatic
+        var isRunning: Boolean = false
     }
 
     private var notificationChannelName = "Flutter Locator Plugin"
@@ -59,7 +62,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
     }
 
     private fun start() {
-        if (PreferencesManager.isServiceRunning(this)) {
+        if (isRunning) {
             return
         }
 
@@ -74,7 +77,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
         val notification = getNotification()
         startForeground(notificationId, notification)
 
-        PreferencesManager.setServiceRunning(this, true)
+        isRunning = true
     }
 
     private fun getNotification(): Notification {
@@ -159,7 +162,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
         }
 
         locatorClient.removeLocationUpdates()
-        PreferencesManager.setServiceRunning(this, false)
+        isRunning = false;
         stopForeground(true)
         stopSelf()
     }
